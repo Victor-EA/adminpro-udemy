@@ -15,6 +15,7 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 
 import { SharedModule } from '../shared/shared.module';
 import { PAGES_ROUTES } from './pages.routes';
+import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PAGES_ROUTES } from './pages.routes';
     ProgressComponent,
     Graficas1Component,
     IncrementadorComponent,
-    GraficasDonaComponent
+    GraficasDonaComponent,
+    AccoutSettingsComponent
   ],
   imports: [SharedModule, PAGES_ROUTES, FormsModule, ChartsModule],
   exports: [
