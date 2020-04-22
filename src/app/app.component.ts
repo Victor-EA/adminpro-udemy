@@ -12,3 +12,9 @@ export class AppComponent {
 
   }
 }
+
+class Heroe {
+  constructor(parameters) {
+
+  }
+}

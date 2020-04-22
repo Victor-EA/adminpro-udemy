@@ -16,6 +16,8 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { SharedModule } from '../shared/shared.module';
 import { PAGES_ROUTES } from './pages.routes';
 import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { AccoutSettingsComponent } from './accout-settings/accout-settings.compo
     Graficas1Component,
     IncrementadorComponent,
     GraficasDonaComponent,
-    AccoutSettingsComponent
+    AccoutSettingsComponent,
+    PromesasComponent,
+    RxjsComponent
   ],
   imports: [SharedModule, PAGES_ROUTES, FormsModule, ChartsModule],
   exports: [
