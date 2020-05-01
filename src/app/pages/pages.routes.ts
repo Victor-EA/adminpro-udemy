@@ -1,3 +1,4 @@
+import { LoginGuardGuard } from './../services/service.index';
 import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -13,6 +14,7 @@ const pagesRoutes: Routes = [
   {
     path: '',
     component: PagesComponent,
+    canActivate:[ LoginGuardGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard'} },
       { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
