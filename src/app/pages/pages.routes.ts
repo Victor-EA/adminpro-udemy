@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { LoginGuardGuard } from './../services/service.index';
 import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,7 +15,7 @@ const pagesRoutes: Routes = [
   {
     path: '',
     component: PagesComponent,
-    canActivate:[ LoginGuardGuard],
+    canActivate: [ LoginGuardGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard'} },
       { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
@@ -22,6 +23,7 @@ const pagesRoutes: Routes = [
       { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
       { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
       { path: 'accout-settings', component: AccoutSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
+      { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de Usuario' } },
       { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
     ],
   },

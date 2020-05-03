@@ -1,3 +1,4 @@
+import { SubirArchivoService } from './../subir-archivo/subir-archivo.service';
 import { Router } from '@angular/router';
 import { URL_SERVICIOS } from './../../config/config';
 import { Usuario } from './../../models/usuario.model';
@@ -15,7 +16,8 @@ export class UsuarioService {
   usuario: Usuario;
   token: string;
 
-  constructor( public http: HttpClient, public router: Router) {
+  // tslint:disable-next-line: variable-name
+  constructor(public http: HttpClient, public router: Router, public _subirArchivo: SubirArchivoService) {
     this.cargarStorage();
   }
 
@@ -96,4 +98,40 @@ export class UsuarioService {
         });
     }));
   }
+
+  actualizarUsuario( usuario: Usuario){
+    let url = URL_SERVICIOS + '/usuario/' + usuario._id;
+    url += '?token=' + this.token;
+    return this.http.put(url, usuario)
+      .pipe(map( (resp: any) => {
+        // this.usuario = resp.usuario;
+        this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+        Swal.fire({
+          title: 'Usuario Actualizado Correctamente',
+          text: usuario.nombre,
+          icon: 'success',
+          confirmButtonText: 'ok',
+        });
+        return true;
+      }));
+  }
+
+  cambiarImagen( archivo: File, id: string){
+
+    this._subirArchivo.subirArchivo(archivo, 'usuarios', id)
+      .then( (resp: any) => {
+          this.usuario.img = resp.usuario.img;
+          Swal.fire({
+            title: 'Imagen Actualizado',
+            text: this.usuario.nombre,
+            icon: 'success',
+            confirmButtonText: 'ok',
+          });
+          this.guardarStorage(id, this.token, this.usuario);
+        })
+        .catch( resp => {
+          console.log(resp);
+        });
+  }
+
 }
